@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block content %}
+        <p>Please enter City data: </p>
+
+        <form method="post">
+                {% csrf_token %}
+                <label for="city"> city: </label></br>
+                <input id="city" type="text" name="city"></br>
+                <label for="country"> country: </label></br>
+                <input id="country" type="text" name="country"></br>
+                <label for="coordination_x"> coordination_x: </label></br>
+                <input id="coordination_x" type="number" name="coordination_x"></br>
+                <label for="coordination_y"> coordination_y: </label></br>
+                <input id="coordination_y" type="number" name="coordination_y"></br></br>
+                <input type="submit" value="Add">
+        </form>
+
+
+{% endblock %}

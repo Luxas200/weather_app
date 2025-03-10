@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    {% if city %}
+        <h1>{{ city.name }}, {{ city.country }}</h1>
+        <p>Coordinates: {{ city.coordination_x }}, {{ city.coordination_y }} </p>
+        <h2>Current temperature in {{ city.name }} is {{ temperature }} °C </h2>
+        <a href="{% url 'weathers:city_delete' city.id %}">
+            <button type="button" class="btn btn-danger">Delete city</button>
+        </a>
+    {% else %}
+        <ul>
+            {{ value }}
+            {% for city in cities %}
+                <li><a href = "{% url 'weathers:city' city.id %}">{{ city.name }} {{ city.country}} </a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
