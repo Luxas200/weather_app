@@ -3,17 +3,16 @@
 {% block content %}
 
     {% if cities %}
-        <ul>
+        <ul class="citiesDecor">
         {% for city in cities %}
-            <li><a href = "{% url 'weathers:city' city.id %}">{{ city.name }} {{ city.country}}</a></li>
+            <li><a class="cityDecor citiesDecor cityLinkDecor" href = "{% url 'weathers:city' city.id %}">{{ city.name }} {{ city.country}} {{ city.temperature }} °C</a></li>
         {% endfor %}
         </ul>
     {% else %}
         <p>No cities are available.</p>
     {% endif %}
 <a href = "{% url 'weathers:city_add' %}">
-    <button type="button" class="btn btn-primary">Add city</button>
+    <button type="button" class="btn">Add city</button>
 </a>
 
-<img src="https://images.pexels.com/photos/2499846/pexels-photo-2499846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid" alt="background_img">
 {% endblock %}

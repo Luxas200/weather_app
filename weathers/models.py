@@ -10,6 +10,11 @@ COUNTRY_CHOICES = {
     "Lietuva": "Lietuva",
     "Latvija": "Latvija",
     "Estija": "Estija",
+    "JAV": "JAV",
+    "Australija": "Australija",
+    "Ispanija": "Ispanija",
+    "Grenlandija": "Grenlandija",
+    "Turkija": "Turkija",
 }
 
 class City(BaseModel):
@@ -17,6 +22,7 @@ class City(BaseModel):
     country = models.CharField(default='Lietuva', max_length=100, choices=COUNTRY_CHOICES)
     coordination_x = models.FloatField(default=0)
     coordination_y = models.FloatField(default=0)
+    temperature = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return f'({self.name} in {self.country}, coordination: {self.coordination_x, self.coordination_y})'
@@ -25,6 +31,8 @@ class City(BaseModel):
 class CityWeathers(BaseModel):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     temperature = models.FloatField(default=0)
+    wind = models.FloatField(default=0)
+    humidity = models.FloatField(default=0)
     time_stamp = models.DateTimeField(auto_now=True)
 
 

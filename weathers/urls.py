@@ -10,6 +10,7 @@ urlpatterns = [
     path('add', views.add_city, name = 'city_add'),
 
     path('delete/<int:pk>/', views.delete_city, name = 'city_delete'),
+    path('update/<int:pk>/', views.update_city, name = 'city_update'),
     # path('weathers/<int:pk>', views.detail, name = 'weathers'),
     path('weathers/', views.weathers_view, name = 'weathers'),
 ]

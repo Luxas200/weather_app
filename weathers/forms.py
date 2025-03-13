@@ -13,3 +13,10 @@ class CityForm(ModelForm):
         model = City
         # fields = "__all__"
         fields = ('name', 'country', 'coordination_x', 'coordination_y')
+
+class FavoriteCityForm(forms.Form):
+    favorite_city = forms.ModelChoiceField(
+        queryset=City.objects.all(),
+        widget=forms.Select(attrs={'class': 'formDecor'}),
+        empty_label="Select your favorite city"
+    )

@@ -3,15 +3,42 @@
 {% block content %}
 
     {% if city %}
+    <div class="cityDecor">
         <h1>{{ city.name }}, {{ city.country }}</h1>
         <p>Coordinates: {{ city.coordination_x }}, {{ city.coordination_y }} </p>
-        <h2>Current temperature in {{ city.name }} is {{ temperature }} °C </h2>
+        <h3>Temperature: {{ temperature }} °C </h3>
+        <h3>Wind: {{ wind }} KM/H </h3>
+        <h3>Humidity: {{ humidity }} % </h3>
+        <h3>Next 8 Hours Forecast:</h3>
+        <table class="tableDecor">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Temperature (°C)</th>
+                    <th>Wind (KM/H)</th>
+                    <th>Humidity (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in forecast %}
+                <tr>
+                    <td>{{ entry.time }}</td>
+                    <td>{{ entry.temperature }}</td>
+                    <td>{{ entry.wind_speed }}</td>
+                    <td>{{ entry.humidity }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
         <a href="{% url 'weathers:city_delete' city.id %}">
-            <button type="button" class="btn btn-danger">Delete city</button>
+            <button type="button" class="deleteBtn">Delete city</button>
+        </a>
+        <a href="{% url 'weathers:city_update' city.id %}">
+            <button type="button" class="btn">Update city</button>
         </a>
     {% else %}
-        <ul>
-            {{ value }}
+        <ul>            
             {% for city in cities %}
                 <li><a href = "{% url 'weathers:city' city.id %}">{{ city.name }} {{ city.country}} </a></li>
             {% endfor %}

@@ -7,10 +7,10 @@
 
     <form method="POST">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <button type="submit" class="deleteBtn">Yes, delete</button>
     </form></br>
     <a href="{% url 'weathers:cities' %}">
-        <button type="button" class="btn btn-secondary">Cancel</button>
+        <button type="button" class="btn">Cancel</button>
     </a>
 </body>
 
