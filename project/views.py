@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from weathers.helper_function.weathers import get_temperature, get_wind, get_humidity
-from weathers.models import City, CityWeathers
+from weathers.models import City
 
 def home(request):
     try:
@@ -21,12 +21,5 @@ def home(request):
         'temperature': temperature,
         'wind': wind,
         'humidity': humidity,
-
     }
     return render(request=request, template_name="home.html", context=context)
-
-
-
-# def weathers(request):
-#     context = {}
-#     return render(request=request, template_name="weathers.html", context=context)

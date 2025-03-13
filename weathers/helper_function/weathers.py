@@ -29,6 +29,7 @@ def get_hourly_forecast(latitude: float, longitude: float) -> list:
     city_hourly_data = json_data.get("hourly", {})
     current_time = datetime.now().strftime("%Y-%m-%dT%H:00")
     current_time_index = city_hourly_data['time'].index(current_time)
+    print(current_time_index)
     city_hourly_forecast = [
         {
             'time': city_hourly_data['time'][i][11:16],
@@ -39,21 +40,3 @@ def get_hourly_forecast(latitude: float, longitude: float) -> list:
         for i in range(current_time_index, min(current_time_index+8,len(city_hourly_data['time'])))
     ]
     return city_hourly_forecast
-
-
-
-
-
-
-
-# url =  "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
-#
-# new_url = f'https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m'
-
-# data = requests.get(url = new_url)
-#
-# json_data = data.json()
-#
-# print(json_data)
-# print(json_data['current']['temperature_2m'])
-

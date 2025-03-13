@@ -5,7 +5,8 @@
     {% if cities %}
         <ul class="citiesDecor">
         {% for city in cities %}
-            <li><a class="cityDecor citiesDecor cityLinkDecor" href = "{% url 'weathers:city' city.id %}">{{ city.name }} {{ city.country}} {{ city.temperature }} °C</a></li>
+            <li><a class="cityDecor citiesDecor cityLinkDecor" href = "{% url 'weathers:city' city.id %}">
+                {{ city.name }} {{ city.country}} {{ city.temperature }} °C</a></li>
         {% endfor %}
         </ul>
     {% else %}
